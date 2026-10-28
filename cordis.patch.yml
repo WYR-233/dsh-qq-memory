@@ -1,0 +1,12 @@
+# dsh-qq-memory 的 profile 补丁：把插件插进 profile 的图层栈。
+# 行按包名引用，Node 解析会找到已安装的代码。
+#
+# ⚠️ 不写死 root：默认按 $DSH_HOME 展开（$DSH_HOME/qq-memory）。
+#   写死会让「隔离实例」误读生产实例的库——whale-guard 2026-10-09 这么踩过。
+#   要给某个实例单独指库，在那个 profile 自己的 patch 里覆盖 root。
+- insert:
+    - id: qq-memory
+      name: 'dsh-qq-memory'
+      config:
+        maxTextChars: 500
+        recallLimit: 10
